@@ -1,79 +1,68 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import './App.css';
-
-const name = "Elijah Chileshe".split("");
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import "./App.css";
 
 function App() {
-  const [isBroken, setIsBroken] = useState(false);
+  const [showCard, setShowCard] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div className="app-container">
-      <h1 className="title">CSC 5231 Advanced Web Technologies 2025</h1>
+      <h1 className="title">Interactive Profile Card</h1>
 
-      <div className="name-container">
-        <AnimatePresence>
-          {!isBroken &&
-            name.map((letter, index) => (
-              <motion.span
-                key={letter + index}
-                initial={{
-                  opacity: 0,
-                  y: -40,
-                  rotate: -15,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: [0, -6, 8, 0], // subtle float
-                  x: [0, 5, -9, 0],
-                  rotate: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 100,
-                  scale: 0,
-                  rotate: 360,
-                }}
-                transition={{
-                  opacity: {
-                    duration: 0.6,
-                    delay: index * 0.2,
-                  },
-                  y: {
-                    duration: 4,
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    ease: "easeInOut",
-                    delay: index * 0.1,
-                    type: "tween",
-                  },
-                  x: {
-                    duration: 4,
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    ease: "easeInOut",
-                    delay: index * 0.1,
-                    type: "tween",
-                  },
-                }}
-                className="letter fancy-letter"
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
-            ))}
-        </AnimatePresence>
-      </div>
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="toggle-card-btn"
+        onClick={() => setShowCard(!showCard)}
+      >
+        {showCard ? "Hide Profile" : "Show Profile"}
+      </motion.button>
 
-      {!isBroken && (
-        <motion.button
-          whileHover={{ scale: 1.1, rotate: -2 }}
-          whileTap={{ scale: 0.9, rotate: 2 }}
-          className="break-button"
-          onClick={() => setIsBroken(true)}
-        >
-          Delete Name
-        </motion.button>
-      )}
+      <AnimatePresence>
+        {showCard && (
+          <motion.div
+            initial={{ x: "100vw", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "100vw", opacity: 0 }}
+            transition={{ type: "spring", stiffness: 50 }}
+            className="profile-card"
+          >
+            <motion.img
+              src="https://via.placeholder.com/120"
+              alt="Profile"
+              className="profile-pic"
+              whileHover={{ scale: 1.1 }}
+            />
+            <h2>Elijah Chileshe</h2>
+            <p>Software Developer | Open Source Enthusiast</p>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="details-btn"
+              onClick={() => setShowDetails(!showDetails)}
+            >
+              {showDetails ? "Hide Details" : "View Details"}
+            </motion.button>
+
+            <AnimatePresence>
+              {showDetails && (
+                <motion.div
+                  className="details-section"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <p>Email: elijah@example.com</p>
+                  <p>Location: Lusaka, Zambia</p>
+                  <p>Projects: Orthanc, StocKeeper</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
