@@ -173,6 +173,11 @@ a:hover {
   color: #81d4fa;
 }
 
+.dark-mode h1 {
+  color: #e0e0e0;
+}
+
+
 /* Responsive layout for mobile */
 @media (max-width: 768px) {
   .profile-card {

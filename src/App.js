@@ -86,7 +86,7 @@ function App() {
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: 100, opacity: 0 }}
-                    transition={{ type: "tween", duration: 0.5 }}
+                    transition={{ type: "tween", duration: 0.8 }}
                   >
                     <ul>
                       <li>
@@ -98,17 +98,17 @@ function App() {
                       <li>Location: Lusaka, Zambia</li>
                       <li>Projects:</li>
                       <ul>
-                        <li>📷 Orthanc for UTH</li>
+                        <li>📷 PACS System for UTH</li>
                         <li>🐐 StocKeeper livestock system</li>
                         <li>📚 JCTR digital archive</li>
                       </ul>
-                      <li>Stack: React, Python, Bash, Docker</li>
+                      <li>Stack: React, Python, Bash, MongoDB</li>
                       <li>
                         Connect:
                         <ul className="social-icons">
                           <li>
                             <a
-                              href="https://linkedin.com/in/elijahchileshe"
+                              href="https://www.linkedin.com/in/elijah-chileshe-4277b3187"
                               target="_blank"
                               rel="noopener noreferrer"
                             >
