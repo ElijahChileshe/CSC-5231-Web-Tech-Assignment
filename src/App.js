@@ -3,66 +3,66 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./App.css";
 
 function App() {
-  const [showCard, setShowCard] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div className="app-container">
       <h1 className="title">Interactive Profile Card</h1>
 
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="toggle-card-btn"
-        onClick={() => setShowCard(!showCard)}
+      <motion.div
+        className="profile-card"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
       >
-        {showCard ? "Hide Profile" : "Show Profile"}
-      </motion.button>
+        <div className="profile-left">
+          <motion.img
+            src="Elijah.jpeg"
+            alt="Elijah Chileshe"
+            className="profile-img"
+            whileHover={{ scale: 1.02 }}
+          />
+        </div>
 
-      <AnimatePresence>
-        {showCard && (
-          <motion.div
-            initial={{ x: "100vw", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "100vw", opacity: 0 }}
-            transition={{ type: "spring", stiffness: 50 }}
-            className="profile-card"
+        <div className="profile-right">
+          <h2>Elijah Chileshe</h2>
+          <p className="role">Software Developer | Open Source Advocate</p>
+          <p>Building impactful systems in healthcare, agriculture, and research.</p>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="details-btn"
+            onClick={() => setShowDetails(!showDetails)}
           >
-            <motion.img
-              src="https://via.placeholder.com/120"
-              alt="Profile"
-              className="profile-pic"
-              whileHover={{ scale: 1.1 }}
-            />
-            <h2>Elijah Chileshe</h2>
-            <p>Software Developer | Open Source Enthusiast</p>
+            {showDetails ? "Hide Details" : "View More Details"}
+          </motion.button>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="details-btn"
-              onClick={() => setShowDetails(!showDetails)}
-            >
-              {showDetails ? "Hide Details" : "View Details"}
-            </motion.button>
-
-            <AnimatePresence>
-              {showDetails && (
-                <motion.div
-                  className="details-section"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <p>Email: elijah@example.com</p>
-                  <p>Location: Lusaka, Zambia</p>
-                  <p>Projects: Orthanc, StocKeeper</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          <AnimatePresence>
+            {showDetails && (
+              <motion.div
+                className="extra-details"
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 100, opacity: 0 }}
+                transition={{ type: "tween", duration: 0.5 }}
+              >
+                <ul>
+                  <li>Email: elijah@datalab.unza.zm</li>
+                  <li>Location: Lusaka, Zambia</li>
+                  <li>Projects:</li>
+                  <ul>
+                    <li>📷 Orthanc for UTH</li>
+                    <li>🐐 StocKeeper livestock system</li>
+                    <li>📚 JCTR digital archive</li>
+                  </ul>
+                  <li>Stack: React, Python, Bash, Docker</li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
     </div>
   );
 }

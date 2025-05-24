@@ -1,52 +1,93 @@
 .app-container {
-  text-align: center;
-  padding: 2rem;
-  font-family: sans-serif;
-  background-color: #f4f4f4;
+  background: linear-gradient(135deg, #edf4ff, #f7faff);
   min-height: 100vh;
+  padding: 2rem;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.toggle-card-btn,
-.details-btn {
-  margin: 1rem;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  background-color: #0055ff;
-  color: white;
-  transition: background-color 0.3s;
-}
-
-.toggle-card-btn:hover,
-.details-btn:hover {
-  background-color: #003ecb;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #1d3557;
 }
 
 .profile-card {
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  text-align: center;
+  display: flex;
+  background-color: #ffffff;
+  width: 800px;
+  max-width: 95%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
-.profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
+.profile-left {
+  flex: 1;
+  background: #e8f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
-.details-section {
+.profile-img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 15px;
+  border: 5px solid #0077cc;
+  object-fit: cover;
+}
+
+.profile-right {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-right h2 {
+  margin-top: 0;
+  color: #003366;
+  font-size: 1.8rem;
+}
+
+.role {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0.3rem 0 1rem;
+}
+
+.details-btn {
+  background-color: #0057d9;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 10px;
   margin-top: 1rem;
-  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.details-btn:hover {
+  background-color: #003da5;
+}
+
+.extra-details {
+  margin-top: 1rem;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.extra-details ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.extra-details li {
+  margin-bottom: 0.5rem;
 }
